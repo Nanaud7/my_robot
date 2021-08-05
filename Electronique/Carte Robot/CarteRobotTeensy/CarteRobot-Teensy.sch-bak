@@ -1192,7 +1192,6 @@ Text Label 9650 1100 0    50   ~ 0
 RX3
 Text Label 9650 1200 0    50   ~ 0
 TX3
-NoConn ~ 6500 3250
 Text Label 6500 2850 0    50   ~ 0
 PWM1
 Text Label 6500 2950 0    50   ~ 0
@@ -1311,4 +1310,25 @@ Wire Wire Line
 Connection ~ 9550 4750
 Wire Wire Line
 	9550 4750 9950 4750
+$Comp
+L power:+5V #PWR?
+U 1 1 611B577E
+P 10650 800
+F 0 "#PWR?" H 10650 650 50  0001 C CNN
+F 1 "+5V" H 10665 973 50  0000 C CNN
+F 2 "" H 10650 800 50  0001 C CNN
+F 3 "" H 10650 800 50  0001 C CNN
+	1    10650 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10450 900  10650 900 
+Wire Wire Line
+	10650 900  10650 800 
+Wire Wire Line
+	10450 1400 10550 1400
+Text Label 10550 1400 0    50   ~ 0
+17
+Text Label 6500 3250 0    50   ~ 0
+17
 $EndSCHEMATC
