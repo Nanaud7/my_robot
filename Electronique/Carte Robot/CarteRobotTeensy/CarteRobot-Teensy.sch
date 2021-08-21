@@ -1695,21 +1695,6 @@ Wire Wire Line
 Wire Wire Line
 	3150 4100 3300 4100
 Wire Wire Line
-	8850 2300 8600 2300
-Wire Wire Line
-	8600 2300 8600 2250
-$Comp
-L power:+5V #PWR0117
-U 1 1 614DFAA8
-P 8600 2250
-F 0 "#PWR0117" H 8600 2100 50  0001 C CNN
-F 1 "+5V" H 8615 2423 50  0000 C CNN
-F 2 "" H 8600 2250 50  0001 C CNN
-F 3 "" H 8600 2250 50  0001 C CNN
-	1    8600 2250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
 	5100 3050 5400 3050
 $Comp
 L Connector_Generic:Conn_01x03 J22
@@ -1815,4 +1800,8 @@ Wire Wire Line
 Wire Wire Line
 	5100 2950 5400 2950
 NoConn ~ 5100 3050
+Wire Wire Line
+	8850 2300 8600 2300
+Text Label 8600 2300 0    50   ~ 0
+Von
 $EndSCHEMATC
