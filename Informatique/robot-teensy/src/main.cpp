@@ -16,10 +16,10 @@ void setup() {
 }
 
 void loop() {
-  //motor_D.setTargetRel(1000);
-  //controller.move(motor_D);
+  motor_D.setTargetRel(10000);
+  controller.move(motor_D);
 
-  nRF_Write("lol3");
+  //nRF_Write("lol3");
 
-  delay(1000);
+  //delay(10);
 }
