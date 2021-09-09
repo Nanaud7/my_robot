@@ -165,12 +165,30 @@ Text Label 3300 3500 0    50   ~ 0
 MOSI
 Text Label 3300 3400 0    50   ~ 0
 CS
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 613A0057
+P 6250 2850
+F 0 "H1" H 6350 2896 50  0000 L CNN
+F 1 "MountingHole" H 6350 2805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 6250 2850 50  0001 C CNN
+F 3 "~" H 6250 2850 50  0001 C CNN
+	1    6250 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 613A4CAC
+P 6250 3050
+F 0 "H2" H 6350 3096 50  0000 L CNN
+F 1 "MountingHole" H 6350 3005 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 6250 3050 50  0001 C CNN
+F 3 "~" H 6250 3050 50  0001 C CNN
+	1    6250 3050
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3550 3300 3300 3300
-Text Label 3300 3300 0    50   ~ 0
+	4550 3000 4700 3000
+Text Label 4700 3000 0    50   ~ 0
 CE
-Wire Wire Line
-	3550 2700 3300 2700
-Text Label 3300 2700 0    50   ~ 0
-IRQ
 $EndSCHEMATC

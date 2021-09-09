@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Module:Arduino_Nano_v3.x A1
-U 1 1 61373980
-P 4050 3000
-F 0 "A1" H 3700 3950 50  0000 C CNN
-F 1 "Arduino_Nano_v3.x" H 4050 1820 50  0001 C CNN
-F 2 "Module:Arduino_Nano" H 4050 3000 50  0001 C CIN
-F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 4050 3000 50  0001 C CNN
-	1    4050 3000
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector_Generic:Conn_02x04_Odd_Even J1
 U 1 1 613798DD
 P 6850 1650
@@ -165,12 +154,41 @@ Text Label 3300 3500 0    50   ~ 0
 MOSI
 Text Label 3300 3400 0    50   ~ 0
 CS
-Wire Wire Line
-	3550 3300 3300 3300
-Text Label 3300 3300 0    50   ~ 0
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 613A0057
+P 6250 2850
+F 0 "H1" H 6350 2896 50  0000 L CNN
+F 1 "MountingHole" H 6350 2805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 6250 2850 50  0001 C CNN
+F 3 "~" H 6250 2850 50  0001 C CNN
+	1    6250 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 613A4CAC
+P 6250 3050
+F 0 "H2" H 6350 3096 50  0000 L CNN
+F 1 "MountingHole" H 6350 3005 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 6250 3050 50  0001 C CNN
+F 3 "~" H 6250 3050 50  0001 C CNN
+	1    6250 3050
+	1    0    0    -1  
+$EndComp
+Text Label 4700 3400 0    50   ~ 0
 CE
-Text Label 3300 2600 0    50   ~ 0
-IRQ
 Wire Wire Line
-	3300 2600 3550 2600
+	4550 3400 4700 3400
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A1
+U 1 1 61373980
+P 4050 3000
+F 0 "A1" H 3700 3950 50  0000 C CNN
+F 1 "Arduino_Nano_v3.x" H 4050 1820 50  0001 C CNN
+F 2 "Module:Arduino_Nano" H 4050 3000 50  0001 C CIN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 4050 3000 50  0001 C CNN
+	1    4050 3000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
