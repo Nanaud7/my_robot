@@ -1,13 +1,13 @@
 // MOTORS
-#define DIR_D   39
-#define STEP_D  38
+#define R_DIR   39
+#define R_STEP  38
 #define MOT_EN  37
-#define STEP_G  36
-#define DIR_G   35
+#define L_STEP  36
+#define L_DIR   35
 
 // ENCODERS
-#define L_ENCODER_A 25
-#define L_ENCODER_B 26
+#define L_ENCODER_A 26
+#define L_ENCODER_B 25
 #define R_ENCODER_A 30
 #define R_ENCODER_B 29
 
@@ -18,3 +18,7 @@
 #define nRF_CE      28
 #define nRF_CSN     10
 #define nRF_IRQ     9
+
+// STRATEGY
+#define STRAT_SELECT    5
+#define STRAT_LED       2

@@ -10,7 +10,7 @@ char message[32];                     // Avec cette librairie, on est "limité" 
 void setup() {
   // Initialisation du port série (pour afficher les infos reçues, sur le "Moniteur Série" de l'IDE Arduino)
   Serial.begin(9600);
-  Serial.println("Récepteur NRF24L01");
+  Serial.println("Recepteur nRF24L01");
   Serial.println("");
 
   // Partie NRF24
@@ -24,6 +24,7 @@ void loop() {
   // On vérifie à chaque boucle si un message est arrivé
   if (radio.available()) {
     radio.read(&message, sizeof(message));                        // Si un message vient d'arriver, on le charge dans la variable "message"
-    Serial.print("Message reçu : "); Serial.println(message);     // … et on l'affiche sur le port série !
+    //Serial.print("Message recu : "); 
+    Serial.println(message);     // … et on l'affiche sur le port série !
   }
 }

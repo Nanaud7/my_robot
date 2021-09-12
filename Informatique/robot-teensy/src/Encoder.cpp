@@ -4,6 +4,9 @@ long L_Cpt = 0;
 long R_Cpt = 0;
 
 uint8_t Encoder_Init(void){
+    L_Cpt = 0;
+    R_Cpt = 0;
+
     // Initialization Left Encoder
     pinMode(L_ENCODER_A, INPUT);
     pinMode(L_ENCODER_B, INPUT);
@@ -33,4 +36,18 @@ void R_Encoder(void){
     else{
         R_Cpt++;
     }
+}
+
+long getLeftTicks(void){
+    long LeftTicks = L_Cpt;
+    L_Cpt = 0;
+
+    return LeftTicks;
+}
+
+long getRightTicks(void){
+    long RightTicks = R_Cpt;
+    R_Cpt = 0;
+
+    return RightTicks;
 }

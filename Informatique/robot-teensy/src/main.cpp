@@ -1,31 +1,39 @@
 #include "main.h"
 
-Stepper motor_D(STEP_D, DIR_D);
-Stepper motor_G(STEP_G, DIR_G);
-StepControl controller;
+IntervalTimer OdoTimer;
+
+char buffer[32] = "";
 
 void setup() {
-  // Initialisation de la communication série
+  // Serial initialization
   Serial.begin(115200);
 
-  // Initialisation des moteurs pas à pas
-  Motor_Init(&motor_D, &motor_G);
+  // Steppers initialization
+  Motor_Init();
+  Motor_Disable();
+  Motor_setSpeed(30);
+  Motor_robotRotRight();
 
   // Encoders initialization
   Encoder_Init();
 
-  // Initialisation de la communication RF
-  nRF_Init();
+  // nRF initialization
+  //nRF_Init();
 
+  // Odometry initialization
+  Odometry_Init();
+  OdoTimer.begin(robotControl, 15000);
+
+  // Strategy initialization
+  pinMode(STRAT_LED, OUTPUT);
+  digitalWrite(STRAT_LED, HIGH);
 }
 
 void loop() {
-  Serial.print("Compt G = ");
-  Serial.print(L_Cpt);
-
-  Serial.print("   Compt D = ");
-  Serial.println(R_Cpt);
-
-  nRF_Write("lol3");
+  //sprintf(buffer, "L:%ld  R:%ld", L_Cpt, R_Cpt);
+  sprintf(buffer, "x:%f  y:%f  o:%f", g_x, g_y, g_angle);
+  //nRF_Write(buffer);
+  Serial.println(buffer);
+  
   delay(100);
-}
+} 
