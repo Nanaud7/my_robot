@@ -1,7 +1,7 @@
 #include "main.h"
 
 Stepper motor_D(STEP_D, DIR_D);
-//Stepper motor_G(STEP_G, DIR_G);
+Stepper motor_G(STEP_G, DIR_G);
 StepControl controller;
 
 void setup() {
@@ -9,17 +9,23 @@ void setup() {
   Serial.begin(115200);
 
   // Initialisation des moteurs pas à pas
-  Motor_Init(motor_D);
+  Motor_Init(&motor_D, &motor_G);
+
+  // Encoders initialization
+  Encoder_Init();
 
   // Initialisation de la communication RF
   nRF_Init();
+
 }
 
 void loop() {
-  motor_D.setTargetRel(10000);
-  controller.move(motor_D);
+  Serial.print("Compt G = ");
+  Serial.print(L_Cpt);
 
-  //nRF_Write("lol3");
+  Serial.print("   Compt D = ");
+  Serial.println(R_Cpt);
 
-  //delay(10);
+  nRF_Write("lol3");
+  delay(100);
 }
