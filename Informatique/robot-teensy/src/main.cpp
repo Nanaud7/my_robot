@@ -2,7 +2,7 @@
 
 IntervalTimer OdoTimer;
 
-char buffer[32] = "";
+float vbat = 0;
 
 void setup() {
   // Serial initialization
@@ -10,30 +10,36 @@ void setup() {
 
   // Steppers initialization
   Motor_Init();
-  Motor_Disable();
-  Motor_setSpeed(30);
-  Motor_robotRotRight();
+  Motor_Enable();
 
   // Encoders initialization
   Encoder_Init();
 
   // nRF initialization
-  //nRF_Init();
+  nRF_Init();
 
   // Odometry initialization
   Odometry_Init();
   OdoTimer.begin(robotControl, 15000);
 
   // Strategy initialization
-  pinMode(STRAT_LED, OUTPUT);
-  digitalWrite(STRAT_LED, HIGH);
+  pinMode(LED_Y, OUTPUT);
+  digitalWrite(LED_Y, HIGH);
+
+  // Battery voltage check
+  analogReadResolution(10);
+  vbat = analogRead(V_BAT) * (3.3/1024.0) * ((100000.0+390000.0)/100000.0);
 }
 
 void loop() {
   //sprintf(buffer, "L:%ld  R:%ld", L_Cpt, R_Cpt);
-  sprintf(buffer, "x:%f  y:%f  o:%f", g_x, g_y, g_angle);
+  //sprintf(buffer, "x:%f  y:%f  o:%f", g_x, g_y, g_angle);
   //nRF_Write(buffer);
-  Serial.println(buffer);
-  
-  delay(100);
+  //Serial.println(buffer);
+
+  char buffer[32] = "";
+  nRF_DeQ(myQueue, buffer);
+  if (buffer != ""){
+    nRF_Write(buffer);
+  }
 } 

@@ -35,9 +35,24 @@ uint8_t Motor_Disable(){
     return 0;
 }
 
-uint8_t Motor_setSpeed(float RPM){
-    if (RPM > RPM_MAX){
-        RPM = RPM_MAX;
+uint8_t Motor_setSpeedLeft(float RPM){
+    if (RPM > MOV_RPM_MAX){
+        RPM = MOV_RPM_MAX;
+    }
+    else if(RPM < 0){
+        RPM = 0;
+    }
+
+    float frequency = (RPM / 60) * STEPS_PER_REV * MICROSTEPS;
+
+    analogWriteFrequency(L_STEP, frequency);
+
+    return 0;
+}
+
+uint8_t Motor_setSpeedRight(float RPM){
+    if (RPM > MOV_RPM_MAX){
+        RPM = MOV_RPM_MAX;
     }
     else if(RPM < 0){
         RPM = 0;
@@ -46,7 +61,14 @@ uint8_t Motor_setSpeed(float RPM){
     float frequency = (RPM / 60) * STEPS_PER_REV * MICROSTEPS;
 
     analogWriteFrequency(R_STEP, frequency);
-    analogWriteFrequency(L_STEP, frequency);
+
+    return 0;
+}
+
+uint8_t Motor_setSpeed(float RPM){
+    Motor_setSpeedLeft(RPM);
+    Motor_setSpeedRight(RPM);
+
     return 0;
 }
 
