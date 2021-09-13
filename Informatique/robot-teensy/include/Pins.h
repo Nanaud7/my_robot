@@ -19,6 +19,21 @@
 #define nRF_CSN     10
 #define nRF_IRQ     9
 
-// STRATEGY
+// LIDAR
+#define LIDAR_RX    0
+#define LIDAR_TX    1
+
+// IHM
+#define IHM_RX      31
+#define IHM_TX      32
+
+// MICROSWITCH
+#define MS_FRONT_L  16
+#define MS_FRONT_R  15
+#define MS_BACK_L   14
+#define MS_BACK_R   13
+
+// OTHERS
+#define V_BAT           23
 #define STRAT_SELECT    5
-#define STRAT_LED       2
+#define LED_Y           2
