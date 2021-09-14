@@ -10,7 +10,7 @@ uint8_t Odometry_Init(void){
     return 0;
 }
 
-void Odometry(void){
+uint8_t Odometry(void){
     int cpt_l = (int)getLeftTicks();
 	int cpt_r = (int)getRightTicks();
 
@@ -26,4 +26,6 @@ void Odometry(void){
 
 	if(g_angle < (-1) * M_PI)
 		g_angle = g_angle + (M_PI * 2.0f);
+
+	return 0;
 }

@@ -10,7 +10,8 @@ void setup() {
 
   // Steppers initialization
   Motor_Init();
-  Motor_Enable();
+  //Motor_Enable();
+  //Motor_Disable();
 
   // Encoders initialization
   Encoder_Init();
@@ -32,14 +33,18 @@ void setup() {
 }
 
 void loop() {
-  //sprintf(buffer, "L:%ld  R:%ld", L_Cpt, R_Cpt);
-  //sprintf(buffer, "x:%f  y:%f  o:%f", g_x, g_y, g_angle);
-  //nRF_Write(buffer);
-  //Serial.println(buffer);
-
   char buffer[32] = "";
+
+  /*
   nRF_DeQ(myQueue, buffer);
   if (buffer != ""){
     nRF_Write(buffer);
   }
+  */
+
+  //sprintf(buffer, "L:%ld  R:%ld", L_Cpt, R_Cpt);
+  sprintf(buffer,"x:%.2f  y:%.2f  o:%.2f", g_x, g_y, g_angle);
+  
+  nRF_Write(buffer);
+  //Serial.println(buffer);
 } 

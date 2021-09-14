@@ -8,7 +8,7 @@
 // Coeffecients
 #define STEPS_PER_REV   200
 #define MICROSTEPS      32
-#define ROT_RPM_MAX     20
+#define ROT_RPM_MAX     30
 #define MOV_RPM_MAX     30
 
 // Prototypes
