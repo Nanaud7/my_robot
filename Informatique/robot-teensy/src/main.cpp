@@ -43,8 +43,10 @@ void loop() {
   */
 
   //sprintf(buffer, "L:%ld  R:%ld", L_Cpt, R_Cpt);
-  sprintf(buffer,"x:%.2f  y:%.2f  o:%.2f", g_x, g_y, g_angle);
-  
-  nRF_Write(buffer);
+  //sprintf(buffer,"x:%.2f  y:%.2f  o:%.2f id:%d", g_x, g_y, g_angle, indexStrategy);
+  //sprintf(buffer, "id:%d X:%.2f Y:%.2f", indexStrategy, blueStrategy[indexStrategy].x, blueStrategy[indexStrategy].y);
+  //nRF_Write(buffer);
+  //sprintf(buffer,"idStrat: %d", indexStrategy);
+  //nRF_Write(buffer);
   //Serial.println(buffer);
 } 

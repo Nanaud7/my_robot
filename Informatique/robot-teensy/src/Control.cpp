@@ -1,10 +1,5 @@
 #include "Control.h"
 
-// Début Test
-double xTarget = 0;
-double yTarget = -400;
-// Fin Test
-
 int state = ROTATION;
 double relativeAngleInitial = 0;
 double distanceToTargetInitial = 0;
@@ -16,11 +11,19 @@ void robotControl(){
     Odometry();
 
     // Calcul de la distance séparant le robot de la cible
-    double distanceToTarget = sqrt(pow(xTarget-g_x,2) + pow(yTarget-g_y,2));
+    double distanceToTarget = sqrt(pow(blueStrategy[indexStrategy].x - g_x ,2) + pow(blueStrategy[indexStrategy].y - g_y,2));
 
     // Calcul de l'angle de rotation à effectuer pour orienter le robot vers la cible
-    double angleToTarget = atan2(yTarget - g_y, xTarget - g_x);
-    angleToTarget = angleToPiPi(angleToTarget);
+    double angleToTarget = atan2(blueStrategy[indexStrategy].y - g_y, blueStrategy[indexStrategy].x - g_x);
+
+    if (angleToTarget > M_PI || angleToTarget < -M_PI)
+        angleToTarget = angleToPiPi(angleToTarget);
+
+    //sprintf(bufferCtrl, "angleT:%.2f", angleToTarget);
+    //nRF_Write(bufferCtrl);
+
+    //sprintf(bufferCtrl, "state:%d", state);
+    //nRF_Write(bufferCtrl);
 
     switch (state)
     {
@@ -51,16 +54,28 @@ double robotControlSpeed(double x, double a){
 uint8_t controlRotation(double angleToTarget){
         double relativeAngle = angleToTarget - g_angle;
 
+        //if (relativeAngle > M_PI || relativeAngle < -M_PI)
+        //    relativeAngle = angleToPiPi(relativeAngle);
+
+        //sprintf(bufferCtrl, "relAngle:%.2f", relativeAngle);
+        //nRF_Write(bufferCtrl);
+
         // Angle à parcourir lors de cette rotation
-        if (relativeAngleInitial == 0){
+        if (relativeAngleInitial == 0)
             relativeAngleInitial = relativeAngle;
-        }
+
         //relativeAngle = angleToPiPi(relativeAngle);
 
-        // Calcul de la progrssion normalisée
+        //sprintf(bufferCtrl, "relAngleInit:%.2f", relativeAngleInitial);
+        //nRF_Write(bufferCtrl);
+
+        // Calcul de la progression normalisée
         double progression = 1 - relativeAngle/relativeAngleInitial;
 	    progression = progression<=1?progression:1;
 	    progression = progression>=0?progression:0;
+
+        //sprintf(bufferCtrl, "progress:%.2f", progression);
+        //nRF_Write(bufferCtrl);
 
         // Choix du sens de rotation
         if (relativeAngle > 0){
@@ -109,8 +124,13 @@ uint8_t controlMove(double distanceToTarget, double angleToTarget){
     // Condition d'arrêt
     if (progression > 0.95){
         Motor_Disable();
-        state = STAND_BY;
         distanceToTargetInitial = 0;
+        indexStrategy++;
+
+        if (indexStrategy >= numberOfPoints)
+            state = STAND_BY;
+        else 
+            state = ROTATION;
     }
     else{
         if(angleError > 0){

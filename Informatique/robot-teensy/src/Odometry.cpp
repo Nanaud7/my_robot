@@ -1,10 +1,10 @@
 #include "Odometry.h"
 
-float g_x = 0, g_y = 0, g_angle = 0;
+double g_x = 0, g_y = 0, g_angle = 0;
 
 uint8_t Odometry_Init(void){
-    g_x = 0;
-    g_y = 0;
+    g_x = blueStrategy[0].x;
+    g_y = blueStrategy[0].y;
     g_angle = 0;
 
     return 0;

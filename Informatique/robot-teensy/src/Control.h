@@ -2,6 +2,7 @@
 #include "Odometry.h"
 #include "Motor.h"
 #include "nRF.h"
+#include "Strategy.h"
 
 #define STAND_BY    0
 #define ROTATION    1
