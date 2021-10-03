@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name CarteRobot-Teensy-rescue)(type Legacy)(uri ${KIPRJMOD}/CarteRobot-Teensy-rescue.lib)(options "")(descr ""))
-)
